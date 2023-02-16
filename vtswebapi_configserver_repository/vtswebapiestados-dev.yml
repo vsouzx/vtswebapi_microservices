@@ -1,0 +1,22 @@
+## Configuração do Ambiente do Cliente (Máquina na Hml) ##
+
+server:
+  port: 8082
+
+# Config do service discovery
+eureka:
+  host: localhost
+  name: eureka
+  port: 8081
+
+## Config Database
+spring:
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://vtswebapi-db.cnhop5ivkd4i.us-east-1.rds.amazonaws.com/vtswebapi
+    username: admin
+    password: vs368797

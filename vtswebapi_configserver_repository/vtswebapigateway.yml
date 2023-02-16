@@ -1,0 +1,29 @@
+## Configuração Default da Aplicação ##
+
+server:
+  port: ${server.port}
+
+## Eureka - Service Discovery
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.host}:${eureka.port}/${eureka.name}/
+    register-with-eureka: true
+    fetch-registry: true
+
+## Config Application and Database
+spring:
+  application:
+    name: vtswebapigateway
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+        lowerCaseServiceId: true
+      metrics:
+        enabled: true
+      routes:
+        - id: vtswebapiestados
+          uri: lb://vtswebapiestados
+          predicates:
+            - Path=/**

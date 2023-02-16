@@ -1,0 +1,35 @@
+## Configuração Default da Aplicação ##
+
+server:
+  port: ${server.port}
+
+## Eureka - Service Discovery
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.host}:${eureka.port}/${eureka.name}/
+    register-with-eureka: true
+    fetch-registry: true
+
+## Config Application and Database
+spring:
+  application:
+    name: vtswebapiestados
+  datasource:
+    url: ${spring.datasource.url}
+    password: ${spring.datasource.password}
+    username: ${spring.datasource.username}
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: ${spring.datasource.minimum-idle}
+      maximum-pool-size: ${spring.datasource.maximum-pool-size}
+      connectionTimeout: 180000
+      idleTimeout: 60000
+      maxLifetime: 180000
+      ##leak-detection-threshold: 2000
+  jpa:
+    show-sql: false
+    database-platform: ${spring.datasource.database-platform}
+    properties:
+      hibernate:
+        ddl-auto: update
